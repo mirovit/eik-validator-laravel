@@ -1,0 +1,16 @@
+{
+    "name": "mirovit/eik-validator-laravel",
+    "description": "Extend the Laravel validator to provide eik/bulstat validation.",
+    "require": {
+        "mirovit/eik-validator": "1.*",
+        "illuminate/support": "5.*",
+        "illuminate/validation": "5.*"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Miroslav Vitanov",
+            "email": "mvvitanov@gmail.com"
+        }
+    ]
+}
