@@ -6,6 +6,11 @@
         "illuminate/support": "5.*",
         "illuminate/validation": "5.*"
     },
+    "autoload": {
+        "psr-4": {
+            "Mirovit\\": "src/"
+        }
+    },
     "license": "MIT",
     "authors": [
         {
