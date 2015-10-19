@@ -27,7 +27,7 @@ class EIKValidatorServiceProvider extends ServiceProvider {
 	private function validate($eik)
 	{
 		try {
-			return (new EIKValidator)->isValid($value);
+			return (new EIKValidator)->isValid($eik);
 		} catch(\Exception $e) {
 			return false;
 		}
