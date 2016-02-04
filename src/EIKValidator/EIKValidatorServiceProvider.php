@@ -3,30 +3,26 @@
 namespace Mirovit\EIKValidator;
 
 use Illuminate\Support\ServiceProvider;
+use Mirovit\EIKValidator\EIKValidator;
 
-class EIKValidatorServiceProvider extends ServiceProvider
-{
-    public function boot()
-    {
-        $this->app['validator']->extend('eik', function ($attribute, $value, $parameters) {
-            return $this->validate($value);
-        });
+class EIKValidatorServiceProvider extends ServiceProvider {
 
-        $this->app['validator']->extend('bulstat', function ($attribute, $value, $parameters) {
-            return $this->validate($value);
-        });
-    }
+	public function boot()
+	{
+		$validator = function($attribute, $value, $parameters)
+		{
+			try {
+				return (new EIKValidator)->isValid($$value);
+			} catch(\Exception $e) {
+				return false;
+			}
+		};
 
+		$this->app['validator']->extend('eik', $validator);
+		$this->app['validator']->extend('bulstat', $validator);
+	}
+	
     public function register()
     {
-    }
-
-    private function validate($eik)
-    {
-        try {
-            return (new EIKValidator())->isValid($eik);
-        } catch (\Exception $e) {
-            return false;
-        }
     }
 }
